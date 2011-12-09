@@ -1,0 +1,1 @@
+steal("funcunit/qunit", "./riftdata_test.js", './shell_test.js');
