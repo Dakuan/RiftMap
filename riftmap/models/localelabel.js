@@ -1,4 +1,4 @@
-steal('jquery/model', function(){
+steal('jquery/model', './basemodel.js', function(){
 
 /**
  * @class Riftmap.Models.Shell
@@ -6,35 +6,52 @@ steal('jquery/model', function(){
  * @inherits jQuery.Model
  * Wraps backend shell services.  
  */
-$.Model('Riftmap.Models.Localelabel',
+Riftmap.Models.Basemodel('Riftmap.Models.Localelabel',
 /* @Static */
 {
-	findAll: "/shells.json",
-	findForZoomLevel: function(localeId, lakeId){ 		
-		
-		var url = "http://riftdata.apphb.com/Locale/GetLocalesForZoomLevel/" + localeId + "?lakeId=" + lakeId + "&callback=?";
-		
-		steal.dev.log(url);
-		
-		var deferred = $.getJSON(url, function(){
-			steal.dev.log('no feckin way')
-		});	
-		
-		deferred.fail(function(data){
-			steal.dev.log('deep meh');
-			steal.dev.log(data);
-		})
-		
-		deferred.done(function(){
-			steal.dev.log('woop');
-		})
+	model: function(data){
+		return new this(data);
 	},
-  	findOne : "/shells/{id}.json", 
-  	create : "/shells.json",
- 	update : "/shells/{id}.json",
-  	destroy : "/shells/{id}.json"
+	findAll: function(){
+		
+	},
+	findForZoomLevel: function(zoomLevel, lakeId, callback){ 		
+		
+		var url= this.getBaseUrl() + "/GetLocalesForZoomLevel/" + zoomLevel + "?lakeId=" + lakeId + "&callback=?";
+				
+		var self = this;
+		
+		$.getJSON(url, function(data){
+			callback(self.models(data));
+		});			
+	},
+  	findOne : function(){
+  		
+  	}, 
+  	create : function(){
+  		
+  	},
+ 	update : function(){
+ 		
+ 	},
+  	destroy : function(){	
+  	},
+  	localesToLocations : function(locales){
+  		
+		var locations = new Array();
+		
+		$.each(locales, function(index, element){
+			locations.push(element.getLocation());
+		});
+  		
+  		return locations;
+  	}
 },
 /* @Prototype */
-{});
+{
+	getLocation : function(){
+		return new Microsoft.Maps.Location(this.Latitude, this.Longitude);
+	}
+});
 
 })

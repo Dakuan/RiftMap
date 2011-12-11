@@ -22,7 +22,7 @@ $.Controller('Riftmap.Controllers.Shell',
 		this.element.html(mapContainer);
 		
 		//attach the map
-		$(mapContainer).riftmap_map();
+		$(mapContainer).riftmap_map(1);
 	}
 })
 })

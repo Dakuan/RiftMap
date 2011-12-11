@@ -2,7 +2,7 @@
 
 load('steal/rhino/rhino.js');
 steal("documentjs").then(function(){
-	DocumentJS('riftdata/riftdata.html', {
-		markdown : ['riftdata']
+	DocumentJS('riftdata/riftmap.html', {
+		markdown : ['riftmap']
 	});
 });

@@ -1,2 +1,2 @@
 // steal model files
-steal("jquery/model", './localelabel.js')
+steal("jquery/model", './localelabel.js', './basemodel.js')

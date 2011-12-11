@@ -2,5 +2,5 @@
 
 load("steal/rhino/rhino.js");
 steal('steal/build').then('steal/build/scripts','steal/build/styles',function(){
-	steal.build('riftdata/scripts/build.html',{to: 'riftdata'});
+	steal.build('riftmap/scripts/build.html',{to: 'riftmap'});
 });
