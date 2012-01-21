@@ -31,3 +31,7 @@ hr {
 .riftMapPin {
 	display: none;
 }
+
+.hover{
+	font-size : 100px!important;
+}
