@@ -57,6 +57,7 @@ $.Controller('Riftmap.Controllers.Map',
         
         southWest.longitude -= bounds.width;
         
+        /*
         var polygon = new Microsoft.Maps.Polygon([bounds.getNorthwest(),northEast, bounds.getSoutheast(), southWest]);
         
         
@@ -65,7 +66,8 @@ $.Controller('Riftmap.Controllers.Map',
      	Microsoft.Maps.Events.addHandler(this.map, "viewchangestart", this.callback("applyZoomPanRestrictions"));
      	
         Microsoft.Maps.Events.addHandler(this.map, "viewchangeend", this.callback("applyZoomPanRestrictions"));
-        
+        */
+       
         //create layers
         this.labelsLayer = new Microsoft.Maps.EntityCollection();
         
