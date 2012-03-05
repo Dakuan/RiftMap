@@ -24,6 +24,8 @@ $.Controller('Riftmap.map',
 		
 		window.onresize = this.callback('resize');
 		
+		window.onresize = this.callback('resize');
+		
      	// Register and load a new module
          Microsoft.Maps.registerModule("mapLoaded", "./riftmap/map/mapLoadedModule.js");
          Microsoft.Maps.loadModule("mapLoaded", { callback: this.callback('onMapLoaded') });
@@ -31,16 +33,13 @@ $.Controller('Riftmap.map',
 		Riftmap.models.locale.findForZoomLevel(10, 1).done(this.callback('zoomToLocales'));
 	},
 	resize: function(){
-		
-
-		//hack its size
-		var oldHeight = this.element.find('.MicrosoftMap').height();
-		
-		this.element.find('.MicrosoftMap').height(oldHeight - 120);		
+		this.element.find('.MicrosoftMap').height(window.innerHeight - 120);
 	},
+
 	onMapLoaded: function(){
 		
-		this.resize();
+	this.resize();
+
 		
 		//attach events        
 		Microsoft.Maps.Events.addHandler(this.map, 'viewchangeend', this.callback('onViewChangeEnd'));
@@ -76,7 +75,7 @@ $.Controller('Riftmap.map',
 
 				var pin = new Microsoft.Maps.Pushpin(location, {
 					text: element.name,
-					icon: './assets/fishPin.png',
+					icon: './riftmap/assets/fishPin.png',
 					width: 50,
 					height: 50,
 					zIndex: 999,
