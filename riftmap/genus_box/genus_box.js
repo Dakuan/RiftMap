@@ -16,9 +16,13 @@ Riftmap.SelectBox('Riftmap.GenusBox',
 	init : function(){
 		this._super();
 		Riftmap.models.genus.findByLake(1).done(this.callback('onDataRecieved'));
+		this.showLoader();
 	},
 	onDataRecieved: function(data){
 		this.addItems(data);
+	},
+	'{document} gettingGenera': function(){
+
 	},
 	'.itemList itemSelected': function(el, ev, args){
 		$(document).trigger('genusSelected', args);

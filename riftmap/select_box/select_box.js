@@ -23,14 +23,18 @@ $.Controller('Riftmap.SelectBox',
 		this.selectedItem = this.element.find('.selectedItem');
 	},
 	addItems: function(items){
+		this.hideLoader();
 		this.list.html($.View('//riftmap/select_box/views/items',{items:items, text: this.options.text}));
 		this.setHeight(items.length);
 		if(!this.options.isiPad){
 			this.list.tinyscrollbar();
 		}
+		else{
+			this.list.css('overflow-y', 'scroll')
+		}
 		this.options.enabled = true;	
 		this.selectedItem.removeClass('disabled');
-		this.selectedItem.find('span').html(this.options.placeHolder);
+		this.selectedItem.find('span[class=text]').html(this.options.placeHolder);
 	},
 	setHeight: function(count){
 		var potential = count * 20;
@@ -65,6 +69,12 @@ $.Controller('Riftmap.SelectBox',
 	reset: function(){
 		this.element.html("//riftmap/select_box/views/init.ejs",{text: this.options.placeHolder});
 	},
+	showLoader: function(){		
+		this.element.find('.loader').fadeIn('100');
+	},
+	hideLoader: function(){
+		this.element.find('.loader').fadeOut('100');
+	},
 	'{document} selectBoxOpening': function(el, ev, args){
 		if(args !== this){
 			steal.dev.log(this.options.placeholder);
@@ -73,7 +83,7 @@ $.Controller('Riftmap.SelectBox',
 	},
 	'.item click': function(el){
 		this.selectedModel = el.model();
-		this.selectedItem.find('span').html(this.selectedModel[this.options.text]);
+		this.selectedItem.find('span[class=text]').html(this.selectedModel[this.options.text]);
 		this.list.trigger('itemSelected', this.selectedModel);
 		this.hide();
 		el.addClass('clicked');

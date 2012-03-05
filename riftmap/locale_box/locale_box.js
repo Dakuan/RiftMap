@@ -22,6 +22,7 @@ Riftmap.SelectBox('Riftmap.LocaleBox',
 	},
 	'{document} speciesSelected': function(el, ev, args){
 		Riftmap.models.locale.findBySpecies(args.id).done(this.callback('onDataRecieved'));
+		this.showLoader();
 	}
 })
 
