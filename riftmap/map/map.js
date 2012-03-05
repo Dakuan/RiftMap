@@ -22,6 +22,7 @@ $.Controller('Riftmap.map',
 			labelOverlay: Microsoft.Maps.LabelOverlay.hidden
 		});
 		
+		window.onresize = this.callback('resize');
 		
      	// Register and load a new module
          Microsoft.Maps.registerModule("mapLoaded", "./riftmap/map/mapLoadedModule.js");
@@ -29,12 +30,17 @@ $.Controller('Riftmap.map',
 		
 		Riftmap.models.locale.findForZoomLevel(10, 1).done(this.callback('zoomToLocales'));
 	},
-	onMapLoaded: function(){
+	resize: function(){
 		
+
 		//hack its size
 		var oldHeight = this.element.find('.MicrosoftMap').height();
 		
-		this.element.find('.MicrosoftMap').height(oldHeight - 120);
+		this.element.find('.MicrosoftMap').height(oldHeight - 120);		
+	},
+	onMapLoaded: function(){
+		
+		this.resize();
 		
 		//attach events        
 		Microsoft.Maps.Events.addHandler(this.map, 'viewchangeend', this.callback('onViewChangeEnd'));
@@ -47,6 +53,9 @@ $.Controller('Riftmap.map',
 		this.map.entities.push(this.labelsLayer);
 
 		this.map.entities.push(this.fishPinLayer);
+	},
+	'{window} onresize': function(){
+		alert('bing');
 	},
 	
 			/*
