@@ -11,7 +11,8 @@ $.Controller('Riftmap.SelectBox',
 		text: "name",
 		placeHolder: 'select an item...',
 		enabled: false,
-		maxHeight: 200
+		maxHeight: 200,
+		isiPad: navigator.userAgent.match(/iPad/i) != null
 	}
 },
 /** @Prototype */
@@ -24,7 +25,9 @@ $.Controller('Riftmap.SelectBox',
 	addItems: function(items){
 		this.list.html($.View('//riftmap/select_box/views/items',{items:items, text: this.options.text}));
 		this.setHeight(items.length);
-		this.list.tinyscrollbar();
+		if(!this.options.isiPad){
+			this.list.tinyscrollbar();
+		}
 		this.options.enabled = true;	
 		this.selectedItem.removeClass('disabled');
 		this.selectedItem.find('span').html(this.options.placeHolder);
@@ -53,7 +56,9 @@ $.Controller('Riftmap.SelectBox',
 		this.extended = true;
 		var self = this;
 		this.list.slideDown('slow', function(){
-			self.list.tinyscrollbar_update();
+			if(!self.options.isiPad){
+				self.list.tinyscrollbar_update();
+			}
 			$('.scrollbar').fadeIn();
 		});
 	},

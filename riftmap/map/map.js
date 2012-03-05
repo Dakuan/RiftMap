@@ -23,18 +23,21 @@ $.Controller('Riftmap.map',
 		});
 		
 		
+		window.onresize = this.callback('resize');
+		
      	// Register and load a new module
          Microsoft.Maps.registerModule("mapLoaded", "./riftmap/map/mapLoadedModule.js");
          Microsoft.Maps.loadModule("mapLoaded", { callback: this.callback('onMapLoaded') });
 		
 		Riftmap.models.locale.findForZoomLevel(10, 1).done(this.callback('zoomToLocales'));
 	},
+	resize: function(){
+		this.element.find('.MicrosoftMap').height(window.innerHeight - 120);
+	},
 	onMapLoaded: function(){
 		
-		//hack its size
-		var oldHeight = this.element.find('.MicrosoftMap').height();
-		
-		this.element.find('.MicrosoftMap').height(oldHeight - 120);
+	this.resize();
+
 		
 		//attach events        
 		Microsoft.Maps.Events.addHandler(this.map, 'viewchangeend', this.callback('onViewChangeEnd'));
