@@ -18,6 +18,7 @@ Riftmap.SelectBox('Riftmap.SpeciesBox',
 	},
 	'{document} genusSelected' : function(el, ev, args){
 		Riftmap.models.species.findByGenus(args.id).done(this.callback('onDataRecieved'));
+		this.showLoader();
 	},
 	onDataRecieved: function(data){
 		this.addItems(data);
