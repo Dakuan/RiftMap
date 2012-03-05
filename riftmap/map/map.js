@@ -70,7 +70,7 @@ $.Controller('Riftmap.map',
 
 				var pin = new Microsoft.Maps.Pushpin(location, {
 					text: element.name,
-					icon: './assets/fishPin.png',
+					icon: './riftmap/assets/fishPin.png',
 					width: 50,
 					height: 50,
 					zIndex: 999,
