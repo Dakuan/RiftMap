@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Riftmap.SelectBox</title>
+        <style type='text/css'>
+            body {font-family: verdana}
+            .error {border: solid 1px red;}
+            .error_text { color: red; font-size: 10px;}
+            td {padding: 3px;}
+        </style>
+	</head>
+	<body>
+	    <h1>Riftmap.SelectBox Demo</h1>
+		<div id='select_box'></div>
+		<script type='text/javascript' 
+                src='../../steal/steal.js'>
+        </script>
+		<script type='text/javascript'>
+			steal('steal/less', 'jquery/jquery.js').then('riftmap/select_box','riftmap/less/riftmap.less',function(){
+				
+				var box = $('#select_box').riftmap_select_box();
+				
+				box.controller().addItems([new $.Model({name:'dom'}), new $.Model({name:'tom'}), new $.Model({name:'bom'})]);
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+.selectBox{
+    position: absolute;
+    bottom: 10px;
+    font-size:13px;
+    width:160px;
+    font-family:"Tahoma";
+    margin-left:20px;
+  .selectedItem{
+    cursor:pointer;
+    color:white;
+    background-color:@darkBlue;
+    height: 15px;
+    .buttonGradient;
+    padding:5px;
+    .regularRadius(3px);
+    text-shadow: 0px -1px 1px #444;
+    box-shadow: inset 0px 1px 2px #222;
+    font-weight: 600;
+    &.disabled{
+      cursor:default;
+      opacity:0.5;
+    }
+    &.selected{
+      box-shadow: inset 0px 4px 5px #000;
+      .buttonGradientSelected;
+      line-height:18px;
+    }
+    span{
+      margin-left:10px;
+    }
+  }
+  .itemList{
+    padding: 5px;
+    display:none;
+    background-color: fade(black, 70%);
+    color:white;
+    overflow: hidden;
+    .regularRadius(5px);
+    margin-bottom:20px;
+    border-style:solid;
+    border-color:@lightBlue;
+    border-width:1px;
+    .item{
+      padding: 1px 5px 1px 5px;
+      height:18px;
+      cursor:pointer;
+      &:hover{
+        color:black;
+        background-color:white;
+        .regularRadius(3px);
+      }
+      &.clicked{
+        .regularRadius(3px);
+        background-color:@lightBlue;
+        color:white;
+      }
+    }
+  }
+}
+#speciesBox{
+  .selectBox{
+    left: 180px;
+  }
+}
+#localeBox{
+  .selectBox{
+    left: 360px;
+  }
+}

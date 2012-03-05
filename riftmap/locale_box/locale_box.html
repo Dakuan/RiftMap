@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Riftmap.LocaleBox</title>
+        <style type='text/css'>
+            body {font-family: verdana}
+            .error {border: solid 1px red;}
+            .error_text { color: red; font-size: 10px;}
+            td {padding: 3px;}
+        </style>
+	</head>
+	<body>
+	    <h1>Riftmap.LocaleBox Demo</h1>
+		<div id='locale_box'></div>
+		<script type='text/javascript' 
+                src='../../steal/steal.js'>
+        </script>
+		<script type='text/javascript'>
+			steal('riftmap/locale_box',function(){
+				
+				$('#locale_box').riftmap_locale_box();
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+steal( 
+	'steal/less',
+	'jquery/jquery.js',
+	'jquery/dom/route')
+.then(
+	'riftmap/less/riftmap.less', 
+	'riftmap/shell',
+	'riftmap/map',
+	'riftmap/toolbar',
+	'riftmap/header',
+	'riftmap/select_box',
+	'riftmap/genus_box',
+	'riftmap/models',
+	'riftmap/plugin/tinyScroll',
+	'riftmap/species_box',
+	'riftmap/locale_box',
+function($){
+	$('#shell').riftmap_shell();
+});

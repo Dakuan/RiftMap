@@ -1,0 +1,3 @@
+<% for(var i= 0; i < this.items.length; i++){%>
+	<%== $.View('//riftmap/select_box/views/item.ejs', {item: this.items[i], text: this.text}) %>
+<% } %>

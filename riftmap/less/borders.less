@@ -1,0 +1,11 @@
+.borderRadius(@tl:10px, @tr:10px, @br:10px, @bl:10px){
+  -moz-border-radius-topleft: @tl;
+  -moz-border-radius-topright: @tr;
+  -moz-border-radius-bottomright: @br;
+  -moz-border-radius-bottomleft: @bl;
+  -webkit-border-radius: @tl @tr @br @bl;
+  border-radius: @tl @tr @br @bl;
+}
+.regularRadius(@radius){
+  .borderRadius(@radius,@radius,@radius,@radius);
+}

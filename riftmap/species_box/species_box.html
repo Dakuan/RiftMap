@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Riftmap.SpeciesBox</title>
+        <style type='text/css'>
+            body {font-family: verdana}
+            .error {border: solid 1px red;}
+            .error_text { color: red; font-size: 10px;}
+            td {padding: 3px;}
+        </style>
+	</head>
+	<body>
+	    <h1>Riftmap.SpeciesBox Demo</h1>
+		<div id='species_box'></div>
+		<script type='text/javascript' 
+                src='../../steal/steal.js'>
+        </script>
+		<script type='text/javascript'>
+			steal('riftmap/species_box',function(){
+				
+				$('#species_box').riftmap_species_box();
+			})
+		</script>
+	</body>
+</html>

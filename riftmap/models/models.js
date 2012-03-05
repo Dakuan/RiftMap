@@ -1,0 +1,1 @@
+steal('./base.js', './genus.js', './species', './locale', './locales')
