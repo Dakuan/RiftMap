@@ -30,6 +30,7 @@ $.Controller('Riftmap.SelectBox',
 			this.list.tinyscrollbar();
 		}
 		else{
+			alert('bing');
 			this.list.css('overflow-y', 'scroll')
 		}
 		this.options.enabled = true;	
